@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <BrowserRouter basename="catatan-ku">
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>

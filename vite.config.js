@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/catatan-ku",
+  base: "/CatatanKu-lanjutan-app-dicoding/",
   plugins: [react(), tailwindcss()],
 });
