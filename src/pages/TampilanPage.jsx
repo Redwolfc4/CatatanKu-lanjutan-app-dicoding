@@ -24,6 +24,7 @@ import { useState } from "react";
 const TampilanPage = () => {
   const [listCatatan, setListCatatan] = useState(getAllNotes());
   const [searchQuery, setSearchQuery] = useSearchParams();
+  const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
   const paramsNow = useLocation();
@@ -36,9 +37,14 @@ const TampilanPage = () => {
     setSearchQuery({ search: event.target.value });
   };
 
-  const onInputHandler = (e) => {
+  const onDescChangeHandler = (e, data) => {
+    console.log(e.target.innerHTML);
     setBody(e.target.innerHTML); // ambil isi HTML dari div
   };
+
+  const onTitleChangeHandler = (e, data) => {
+    setTitle(e.target.value); // ambil isi HTML dari div
+  }; // kalau controlled input harus ada onChange
 
   const onSubmitHandler = (event, id) => {
     event.preventDefault();
@@ -57,7 +63,8 @@ const TampilanPage = () => {
     // reset form
     event.target.reset();
 
-    // reset body
+    // reset form
+    setTitle("");
     setBody("");
 
     // navigate to /
@@ -92,8 +99,13 @@ const TampilanPage = () => {
             onClick={() => setCurrentPage("add")}
             element={
               <FormCatatanKu
-                onInputHandler={onInputHandler}
+                setTitle={setTitle}
+                setBody={setBody}
+                onInputHandler={onDescChangeHandler}
                 onSubmitHandler={onSubmitHandler}
+                onTitleChangeHandler={onTitleChangeHandler}
+                title={title}
+                body={body}
               />
             }
           ></Route>
@@ -101,8 +113,12 @@ const TampilanPage = () => {
             path="/detail/:id"
             element={
               <FormCatatanKu
-                onInputHandler={onInputHandler}
+                setTitle={setTitle}
+                onInputHandler={onDescChangeHandler}
                 onSubmitHandler={onSubmitHandler}
+                onTitleChangeHandler={onTitleChangeHandler}
+                body={body}
+                title={title}
                 setBody={setBody}
               />
             }
