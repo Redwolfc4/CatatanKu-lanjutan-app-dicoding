@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/CatatanKu-lanjutan-app-dicoding/">
       <App />
     </BrowserRouter>
   </StrictMode>
